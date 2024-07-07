@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ width, color = "white", name, bgColor, type, className, icon, textAlignment="center" }) => {
+const Button = ({ width, color = "white", name, bgColor, type, className, icon, textAlignment="center",onClick }) => {
   let styles = {
     textAlign: textAlignment
   };
@@ -24,7 +24,8 @@ const Button = ({ width, color = "white", name, bgColor, type, className, icon, 
   }
 
   return (
-    <button className="relative button rounded-md px-3 py-2 text-md" style={styles}>
+    <button className="relative button rounded-md px-3 py-2 text-md" style={styles} onClick={onClick}
+    >
       {name}
       {icon && <span className="ml-2 absolute right-[4px] top-[12px]">{icon}</span>}
     </button>
