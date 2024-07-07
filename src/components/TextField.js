@@ -15,12 +15,14 @@ const TextField = ({
   checkBoxWeight,
   checkBoxHeight,
   label,
-  inputWidth
+  inputWidth,
+  error,
+  required = false,
 }) => {
 
   let styles = {
     width: `${width}`,
-  }
+  };
 
   let inputStyles = {
     color: color,
@@ -38,23 +40,19 @@ const TextField = ({
   const inputChangeHandler = (event) => {
     if (type === "checkbox") {
       onChange(name);
-    // } else if (type === "number") {
-    //   onChange(event);
     } else {
       onChange(event);
     }
   };
 
   return (
-    <div className="flex flex-col justify-center items-start"
-    style={styles}
-    >
+    <div className="flex flex-col justify-center items-start" style={styles}>
       {label && (
         <label
           htmlFor={name}
-          className="block text-sm font-medium text-gray-600"
+          className="block text-sm font-medium text-gray-600 relative"
         >
-          {label}
+         {required && <span className="text-red-500 absolute right-[-10px]">*</span>} {label}
         </label>
       )}
       <input
@@ -70,6 +68,7 @@ const TextField = ({
         className="p-1 border border-2 border-gray-300 rounded-lg"
       />
       {children}
+      {error && <p className="text-red-500 text-xs">{error}</p>}
     </div>
   );
 };

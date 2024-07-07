@@ -1,6 +1,6 @@
 import React from "react";
 
-const Selector = ({ options, name, value, onChange, width, label }) => {
+const Selector = ({ options, name, value, onChange, width, label, error, required = false }) => {
   let styles = {
     width: `${width}px`,
   };
@@ -10,9 +10,9 @@ const Selector = ({ options, name, value, onChange, width, label }) => {
       {label && (
         <label
           htmlFor={name}
-          className="block text-sm font-medium text-gray-600"
+          className="block text-sm font-medium text-gray-600 relative"
         >
-          {label}
+          {required && <span className="text-red-500 absolute right-[-10px]">*</span>} {label}
         </label>
       )}
       <select
@@ -29,6 +29,7 @@ const Selector = ({ options, name, value, onChange, width, label }) => {
           </option>
         ))}
       </select>
+      {error && <p className="text-red-500 text-xs">{error}</p>}
     </div>
   );
 };
