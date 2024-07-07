@@ -58,7 +58,7 @@ const ReferralForm = ({ handleCloseModal }) => {
     const formErrors = validate();
     if (Object.keys(formErrors).length === 0) {
       try {
-        const response = await fetch("http://localhost:8080/api/referrals", {
+        const response = await fetch("https://accredian-backend-task-u8fi.onrender.com/api/referrals", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
