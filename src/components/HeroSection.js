@@ -10,7 +10,7 @@ const HeroSection = () => {
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
+  function handleCloseModal(){
     setIsModalOpen(false)
   }
 
@@ -69,7 +69,7 @@ const HeroSection = () => {
       </div>
 
      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <ReferralForm />
+        <ReferralForm handleCloseModal={handleCloseModal} />
       </Modal>
     </div>
   );
